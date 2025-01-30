@@ -7,11 +7,13 @@
 .paddle-container {
     display: flex;
     margin: 0 auto;
-    height: 100vh;
+    height: 10vh;
     justify-content: center;
     align-items: flex-end;
-    position: relative;
+    position: fixed;
     bottom: 0;
+    right: 0;
+    left: 0;
     /* background-color: aqua; */
 }
 
