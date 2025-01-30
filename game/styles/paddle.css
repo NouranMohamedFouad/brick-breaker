@@ -26,6 +26,10 @@
     /* remember: absoulte elements are relative to their non-static parents, and not from the normal document flow */
     position: absolute;
     cursor: pointer;
+
+    &.touched{
+        background: black !important;
+    }
 }
 
 .paddle-initial:hover {

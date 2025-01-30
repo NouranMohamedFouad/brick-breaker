@@ -23,7 +23,6 @@ export class Paddle {
         document.addEventListener("mousemove", (e) => {
 
             if (this.isDragged === true) {
-                console.log(this.isDragged);
                 //calculate the distance the mouse has moved, then update the posisition of the paddle.
                 //e.g., 200(current mouse x) - 100(previous position of paddle) = 100
                 let deltaX = e.clientX - this.positionX;
