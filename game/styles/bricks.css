@@ -10,7 +10,7 @@ body {
     background: #eee;
 }
 
-.game-container {
+.bricks-container {
     display: grid;
     justify-content: center;
     align-content: center;
@@ -21,8 +21,8 @@ body {
 }
 
 .brick {
-    width: 90px;
-    height: 40px;
+    width: 40px;
+    height: 20px;
     background: linear-gradient(to bottom, #392c44a4, #f7a6dcea);
     border-radius: 5px;
     border: 1px solid #700070;

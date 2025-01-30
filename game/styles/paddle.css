@@ -10,7 +10,7 @@
     height: 10vh;
     justify-content: center;
     align-items: flex-end;
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
     right: 0;
     left: 0;

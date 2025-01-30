@@ -1,7 +1,9 @@
 export class BrickBreaker {
+  container;
+
   constructor(containerId, rows, cols, brickWidth, brickHeight, brickPadding, crackedChance) {
     this.container = document.createElement("div");
-    this.container.classList.add("game-container");
+    this.container.classList.add("bricks-container");
     this.rows = rows;
     this.cols = cols;
     this.brickWidth = brickWidth;
@@ -15,7 +17,7 @@ export class BrickBreaker {
   }
 
   setupGameContainer() {
-    this.container.style.width = '80%';
+    this.container.style.width = '100%';
     this.container.style.height = '80%';
     this.container.style.display = 'grid';
     this.container.style.gridTemplateColumns = `repeat(${this.cols}, ${this.brickWidth}px)`;
