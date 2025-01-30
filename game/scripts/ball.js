@@ -30,7 +30,7 @@ export class Ball{
       
       //detecting ball collision with container edges and directing the ball within the container edges
       //x-Axis (Left and Right edges)
-      if (ballCenterX+ballRadius > containerRect.right-5 || ballCenterX-ballRadius < containerRect.left-10) {
+      if (ballCenterX+ballRadius > containerRect.right || ballCenterX-ballRadius < containerRect.left-10) {
           this.ballVelocityX*=-1; //reverse the velocity means reversing ball direction on x-axis
       }
       

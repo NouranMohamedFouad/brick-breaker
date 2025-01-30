@@ -6,4 +6,6 @@
     border-radius: 50%;
     position: absolute; /*to make the ball movable, to allow the ball image position to change when calling the function, 
                         this tell the browser that we will not stick to the ball initial position*/
-}
+    pointer-events: none;
+    user-select: none;
+  }

@@ -22,7 +22,7 @@ export class BrickBreaker {
     this.container.style.display = 'grid';
     this.container.style.gridTemplateColumns = `repeat(${this.cols}, ${this.brickWidth}px)`;
     this.container.style.gridGap = `${this.brickPadding}px`;
-    this.container.style.justifyContent = 'center';
+    this.container.style.justifyContent = 'space-evenly';
   }
 
   createBricks() {
