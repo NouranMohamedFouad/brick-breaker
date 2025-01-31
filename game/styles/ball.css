@@ -1,11 +1,8 @@
-
-  
-#ball {
+ #ball {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    position: absolute; /*to make the ball movable, to allow the ball image position to change when calling the function, 
-                        this tell the browser that we will not stick to the ball initial position*/
+    position: absolute; 
     pointer-events: none;
     user-select: none;
   }

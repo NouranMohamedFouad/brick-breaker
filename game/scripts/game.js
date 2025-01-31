@@ -33,8 +33,9 @@ export class Game {
             // this.ball.ballVelocityY *= -1;
             document.getElementById("log").innerHTML += `${result.sideX} - ${result.sideY}<br>`
 
-        } else {
-            this.paddle.paddleElement.style.background = "yellow"
+        }
+        else {
+            this.paddle.paddleElement.style.background = "black"
         }
         this.ball.animate(this.container);
 
