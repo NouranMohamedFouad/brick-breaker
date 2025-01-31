@@ -10,7 +10,6 @@ export class BrickBreaker {
     this.levels = levels;
     this.bricks = [];
     this.clickCounts = {};
-
     this.loadLevel(0);
   }
 
@@ -34,21 +33,26 @@ export class BrickBreaker {
 
     for (let r = 0; r < level.rows; r++) {
       for (let c = 0; c < level.cols; c++) {
+        const brickId = `brick-${r}-${c}`;
+        const brick = document.createElement('div');
+
         if (level.brickLayout[r][c] === 0) {
           continue;
         }
 
-        const brick = document.createElement('div');
         brick.classList.add('brick');
-        const brickId = `brick-${r}-${c}`;
-        brick.id = brickId;
         this.clickCounts[brickId] = 0;
 
-        if (Math.random() < level.crackedChance) {
-          brick.classList.add('cracked');
-          this.clickCounts[brickId] = 1;
+        if (level.brickLayout[r][c] === 2) {
+          brick.classList.add('silverBrick');
+        } else {
+          if (Math.random() < level.crackedChance) {
+            brick.classList.add('cracked');
+            this.clickCounts[brickId] = 1;
+          }
         }
 
+        brick.id = brickId;
         brick.style.gridRowStart = r + 1;
         brick.style.gridColumnStart = c + 1;
 
@@ -60,9 +64,12 @@ export class BrickBreaker {
     }
   }
 
-
   handleBrickClick(brickId, brick) {
+
     this.clickCounts[brickId]++;
+    if (brick.classList.contains('silverBrick')) {
+      return;
+    }
     if (this.clickCounts[brickId] === 1) {
       brick.classList.add('cracked');
     } else if (this.clickCounts[brickId] === 2) {
@@ -72,12 +79,15 @@ export class BrickBreaker {
   }
 
   checkLevelCompletion() {
-    if (this.bricks.every(brick => brick.classList.contains('hidden'))) {
+    if (this.bricks.every(brick => {
+      return brick.classList.contains('hidden') || brick.classList.contains('silverBrick');
+    })) {
       setTimeout(() => {
         this.nextLevel();
       }, 200);
     }
   }
+
 
   nextLevel() {
     this.container.innerHTML = '';
