@@ -10,10 +10,10 @@ export class Paddle {
         this.container.appendChild(this.paddleElement);
         // let bodyElement = document.body;
         this.isDragged = false; //initial state
-        this.movePaddle();
+        //this.movePaddle();
     }
 
-    movePaddle() {
+    movePaddle(gameRect) {
         this.paddleElement.addEventListener("mousedown", (e) => {
             //left is 0
             this.isDragged = true;
@@ -30,12 +30,12 @@ export class Paddle {
                 this.positionX += deltaX;
 
                 //preventing from moving beyond the left edge of the viewport
-                if (this.positionX < 0) {
-                    this.positionX = 0;
+                if (this.positionX < gameRect.left) {
+                    this.positionX = gameRect.left - 1;
                 }
 
                 // Prevent the paddle from moving off the right edge of the viewport
-                let maxX = window.innerWidth - this.paddleElement.offsetWidth;
+                let maxX = gameRect.right - this.paddleElement.offsetWidth;
                 if (this.positionX > maxX) {
                     this.positionX = maxX;
                 }

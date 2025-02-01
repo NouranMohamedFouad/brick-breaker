@@ -15,6 +15,7 @@ export class Game {
         ball.ballY = this.container.getBoundingClientRect().top + 10;
         // ball.animate(this.container);
         this.mainFrame()
+        this.paddle.movePaddle(this.container.getBoundingClientRect());
     }
 
 
@@ -31,7 +32,7 @@ export class Game {
             // console.log("lol");
             this.ball.ballVelocityX *= -1;
             // this.ball.ballVelocityY *= -1;
-            document.getElementById("log").innerHTML += `${result.sideX} - ${result.sideY}<br>`
+            // document.getElementById("log").innerHTML += `${result.sideX} - ${result.sideY}<br>`
 
         }
         else {
