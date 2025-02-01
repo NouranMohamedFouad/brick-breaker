@@ -75,8 +75,6 @@ export class BrickBreaker {
   }
 
   handleBrickInteraction(brickId) {
-    console.log("lollllllllllllllllllllllllllllllllllllllll" + brickId);
-
     const brick = document.getElementById(brickId);
     this.clickCounts[brickId]++;
     if (brick.classList.contains('silverBrick')) {
@@ -92,15 +90,13 @@ export class BrickBreaker {
   }
 
   checkLevelCompletion() {
-    // if (this.bricks.every(brick => {
-    //   return brick.classList.contains('hidden') || brick.classList.contains('silverBrick');
-    // }))
-
-    // {
-    //   setTimeout(() => {
-    //     this.nextLevel();
-    //   }, 200);
-    // }
+    if (this.bricks.every(brick => {
+      return brick.classList.contains('hidden') || brick.classList.contains('silverBrick');
+    })) {
+      setTimeout(() => {
+        this.nextLevel();
+      }, 200);
+    }
   }
 
 

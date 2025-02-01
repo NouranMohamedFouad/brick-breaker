@@ -18,44 +18,50 @@ export class Game {
         this.bricksContainer.loadLevel(0);
         this.mainFrame()
         this.paddle.movePaddle(this.container.getBoundingClientRect());
+        window.addEventListener('keydown', (ev) => {
+            if (ev.key === "/") {
+                this.bricksContainer.nextLevel();
+            }
+        })
     }
 
     mainFrame() {
         requestAnimationFrame(this.mainFrame.bind(this))
+
         const circle = new Circle(this.ball.container.getBoundingClientRect())
 
-        const result = circle.checkCollision(this.paddle.paddleElement.getBoundingClientRect())
-        //console.log(result);
-
-        if (result.test) {
-            if (result.sideY === "top" || result.sideY === "bottom") {
+        // check collision with paddle
+        const paddleRect = this.paddle.paddleElement.getBoundingClientRect()
+        const paddleCollision = circle.checkCollision(paddleRect)
+        if (paddleCollision.test) {
+            if (paddleCollision.sideY === "top" || paddleCollision.sideY === "bottom") {
                 this.ball.ballVelocityY *= -1;
             }
-            if (result.sideX === "left" || result.sideX === "right") {
+            if (paddleCollision.sideX === "left" || paddleCollision.sideX === "right") {
                 this.ball.ballVelocityX *= -1;
             }
-        } else {
             this.paddle.paddleElement.style.background = "black"
+        } else {
+            this.paddle.paddleElement.style.background = "red"
         }
-        this.ball.animate(this.container);
 
+        // check collision with bricks
         for (let i = 0; i < this.bricksContainer.brickPositions.length; i++) {
-            console.log(this.bricksContainer.brickPositions[i]);
-            const result = circle.checkCollision(this.bricksContainer.brickPositions[i])
-            console.log(result);
-            if (result.test) {
-                this.bricksContainer.handleBrickInteraction(this.bricksContainer.brickPositions[i].id)
-                if (result.sideY === "top" || result.sideY === "bottom") {
+            const brickRect = this.bricksContainer.brickPositions[i]
+            const brickCollision = circle.checkCollision(brickRect)
+            if (brickCollision.test) {
+                this.bricksContainer.handleBrickInteraction(brickRect.id)
+                if (brickCollision.sideY === "top" || brickCollision.sideY === "bottom") {
                     this.ball.ballVelocityY *= -1;
                 }
-                if (result.sideX === "left" || result.sideX === "right") {
+                if (brickCollision.sideX === "left" || brickCollision.sideX === "right") {
                     this.ball.ballVelocityX *= -1;
-                }
-                else if (result.sideY === "bottom") {
-                    this.ball.ballVelocityY *= -1;
                 }
                 break;
             }
         }
+
+        // update ball position
+        this.ball.animate(this.container);
     }
 }
