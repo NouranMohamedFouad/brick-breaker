@@ -28,16 +28,15 @@ export class Game {
 
         if (result.test) {
             if (!result.sideX && result.sideY === "top") {
+                this.ball.ballVelocityY *= -1; 
+            }
+            else if ((result.sideX === "left" || result.sideX === "right") && !result.sideY) {
+                this.ball.ballVelocityX *= -1;
+            }
+            else if ((result.sideX === "left" || result.sideX === "right") && (result.sideY === "top")) {
+                this.ball.ballVelocityX *= -1;
                 this.ball.ballVelocityY *= -1;
             }
-            else if (result.sideX && result.sideY === "top") {
-                this.ball.ballVelocityX *= -1;
-                // this.ball.ballVelocityY *= -1;
-
-            }
-            // this.ball.ballVelocityY *= -1;
-            // document.getElementById("log").innerHTML += `${result.sideX} - ${result.sideY}<br>`
-
         }
         else {
             this.paddle.paddleElement.style.background = "black"
