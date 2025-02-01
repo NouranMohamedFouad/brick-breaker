@@ -11,7 +11,8 @@ export class Ball {
         this.ballY = 10;
         this.ballVelocityX = 3;
         this.ballVelocityY = 2;
-
+        this.ballGame = null;
+        this.lives=5;
 
     }
 
@@ -35,8 +36,16 @@ export class Ball {
         }
 
         //y-Axis (Top and Bottom edges)
-        if (ballCenterY + ballRadius > containerRect.bottom - 5 || ballCenterY - ballRadius < containerRect.top - 10) {
+        if (ballCenterY + ballRadius > containerRect.bottom - 5 ) {
             this.ballVelocityY *= -1; //reverse the velocity means reversing ball direction on y-axis
+            this.lives--;
+            if(this.lives <= 0){
+                console.log('game over')
+            }
+        }else if(ballCenterY - ballRadius < containerRect.top - 10){
+            this.ballVelocityY *= -1;
+
+
         }
 
         //visualize the updated ball position to the user
