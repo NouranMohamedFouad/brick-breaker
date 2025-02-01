@@ -3,6 +3,8 @@ export class BrickBreaker {
   container;
   levels;
   currentLevelIndex = 0;
+  brickPositions = [];
+
 
   constructor(levels) {
     this.container = document.createElement("div");
@@ -21,6 +23,8 @@ export class BrickBreaker {
     this.currentLevelIndex = levelIndex;
     this.bricks = [];
     this.clickCounts = {};
+    this.brickPositions = [];
+
     const level = this.levels[levelIndex];
 
     this.container.innerHTML = '';
@@ -56,16 +60,21 @@ export class BrickBreaker {
         brick.style.gridRowStart = r + 1;
         brick.style.gridColumnStart = c + 1;
 
-        brick.addEventListener('click', () => this.handleBrickClick(brickId, brick));
 
+        const rect = brick.getBoundingClientRect();
+        this.brickPositions.push(
+          {
+            id: brickId,
+            ...rect
+          });
         this.bricks.push(brick);
         this.container.appendChild(brick);
       }
     }
   }
 
-  handleBrickClick(brickId, brick) {
-
+  handleBrickInteraction(brickId) {
+    const brick = document.getElementById(brickId);
     this.clickCounts[brickId]++;
     if (brick.classList.contains('silverBrick')) {
       return;
