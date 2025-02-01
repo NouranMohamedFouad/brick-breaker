@@ -7,7 +7,7 @@
 .paddle-container {
     display: flex;
     margin: 0 auto;
-    height: 10vh;
+    height: 20%;
     justify-content: center;
     align-items: flex-end;
     /* position: fixed; */
