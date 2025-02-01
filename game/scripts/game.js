@@ -27,10 +27,14 @@ export class Game {
         console.log(result);
 
         if (result.test) {
-            // this.paddle.container.classList.add("paddle-expanded")
-            // this.paddle.paddleElement.style.background = "black"
-            // console.log("lol");
-            this.ball.ballVelocityX *= -1;
+            if (!result.sideX && result.sideY === "top") {
+                this.ball.ballVelocityY *= -1;
+            }
+            else if (result.sideX && result.sideY === "top") {
+                this.ball.ballVelocityX *= -1;
+                // this.ball.ballVelocityY *= -1;
+
+            }
             // this.ball.ballVelocityY *= -1;
             // document.getElementById("log").innerHTML += `${result.sideX} - ${result.sideY}<br>`
 
