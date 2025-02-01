@@ -44,7 +44,7 @@ body {
 
 .silverBrick {
     background: silver;
-    pointer-events: none;
-    border: 2px solid #8a8a8a;
+    /* pointer-events: none; */
+    /* border: 2px solid #8a8a8a; */
     box-shadow: 0 0 5px #888888;
 }

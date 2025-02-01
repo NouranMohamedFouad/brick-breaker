@@ -12,7 +12,7 @@ export class BrickBreaker {
     this.levels = levels;
     this.bricks = [];
     this.clickCounts = {};
-    this.loadLevel(0);
+
   }
 
   loadLevel(levelIndex) {
@@ -61,19 +61,22 @@ export class BrickBreaker {
         brick.style.gridColumnStart = c + 1;
 
 
+        this.container.appendChild(brick);
         const rect = brick.getBoundingClientRect();
         this.brickPositions.push(
           {
             id: brickId,
-            ...rect
+            isSilver: brick.classList.contains('silverBrick'),
+            ...rect.toJSON()
           });
         this.bricks.push(brick);
-        this.container.appendChild(brick);
       }
     }
   }
 
   handleBrickInteraction(brickId) {
+    console.log("lollllllllllllllllllllllllllllllllllllllll" + brickId);
+
     const brick = document.getElementById(brickId);
     this.clickCounts[brickId]++;
     if (brick.classList.contains('silverBrick')) {
@@ -83,19 +86,23 @@ export class BrickBreaker {
       brick.classList.add('cracked');
     } else if (this.clickCounts[brickId] === 2) {
       brick.classList.add('hidden');
+      this.brickPositions = this.brickPositions.filter(brick => brick.id !== brickId);
       this.checkLevelCompletion();
     }
   }
 
   checkLevelCompletion() {
-    if (this.bricks.every(brick => {
-      return brick.classList.contains('hidden') || brick.classList.contains('silverBrick');
-    })) {
-      setTimeout(() => {
-        this.nextLevel();
-      }, 200);
-    }
+    // if (this.bricks.every(brick => {
+    //   return brick.classList.contains('hidden') || brick.classList.contains('silverBrick');
+    // }))
+
+    // {
+    //   setTimeout(() => {
+    //     this.nextLevel();
+    //   }, 200);
+    // }
   }
+
 
 
   nextLevel() {
