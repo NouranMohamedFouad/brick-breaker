@@ -3,10 +3,11 @@ import { Circle } from "./circle.js"
 
 export class Game {
     container = document.createElement("div")
+    
     constructor(ball, paddle, bricksContainer) {
         this.ball = ball
         this.paddle = paddle
-
+        
         this.container.classList.add("game-container")
         document.body.append(this.container)
 
@@ -24,7 +25,7 @@ export class Game {
         const circle = new Circle(this.ball.container.getBoundingClientRect())
 
         const result = circle.checkCollision(this.paddle.paddleElement.getBoundingClientRect())
-        console.log(result);
+        //console.log(result);
 
         if (result.test) {
             if (!result.sideX && result.sideY === "top") {
