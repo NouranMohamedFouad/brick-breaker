@@ -16,8 +16,8 @@ export class Game {
 
         this.container.append(bricksContainer.container, ball.container, paddle.container)
         this.container.appendChild(ball.livesContainer)
-        ball.ballX = this.container.getBoundingClientRect().left + 150;
-        ball.ballY = this.container.getBoundingClientRect().top + 10;
+        ball.ballX = this.container.getBoundingClientRect().left + 400;
+        ball.ballY = this.container.getBoundingClientRect().top + 350;
         // ball.animate(this.container);
         this.bricksContainer.loadLevel(0);
         this.mainFrame()

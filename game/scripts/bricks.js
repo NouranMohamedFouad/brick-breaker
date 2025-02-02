@@ -6,13 +6,14 @@ export class BrickBreaker {
   brickPositions = [];
 
 
-  constructor(levels, ball) {
+  constructor(levels, ball, paddle) {
     this.container = document.createElement("div");
     this.container.classList.add("bricks-container");
     this.levels = levels;
     this.bricks = [];
     this.clickCounts = {};
-    this.ball = ball; 
+    this.ball = ball;
+    this.paddle = paddle;
 
   }
 
@@ -103,8 +104,9 @@ export class BrickBreaker {
 
 
   nextLevel() {
-    this.ball.ballX = this.container.getBoundingClientRect().left + 150;
-    this.ball.ballY = this.container.getBoundingClientRect().top + 10;    
+    this.paddle.style.left;
+    this.ball.ballX = this.container.getBoundingClientRect().left + 400;
+    this.ball.ballY = this.container.getBoundingClientRect().top + 350;
     this.ball.increaseSpeed();
     this.container.innerHTML = '';
     this.loadLevel(this.currentLevelIndex + 1);
