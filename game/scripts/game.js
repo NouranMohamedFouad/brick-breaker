@@ -13,9 +13,9 @@ export class Game {
         this.bricksContainer = bricksContainer;
         this.container.classList.add("game-container")
         document.body.append(this.container)
-
-        this.container.append(bricksContainer.container, ball.container, paddle.container)
         this.container.appendChild(ball.livesContainer)
+        this.container.append(bricksContainer.container, ball.container, paddle.container)
+        
         ball.ballX = this.container.getBoundingClientRect().left + 400;
         ball.ballY = this.container.getBoundingClientRect().top + 350;
         // ball.animate(this.container);
