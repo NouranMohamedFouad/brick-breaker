@@ -10,8 +10,8 @@ Brick Breaker is an interactive arcade game where players control a paddle to bo
 
 ## 🏟️ **Team Members**
 - **Mohamed Amr** 
-- **Osama Ismael** 
-- **Basmallah Abdullah** 
+- **Osama Ismail** 
+- **Basmala Abdullah** 
 - **Nouran Mohamed** 
 
 We are a team of four developers collaborating to build a fun and dynamic game experience! 
