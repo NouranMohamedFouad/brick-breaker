@@ -9,19 +9,20 @@ export class Paddle {
         this.paddleElement.classList.add("paddle-initial");
         this.container.appendChild(this.paddleElement);
         // let bodyElement = document.body;
-        this.isDragged = false; //initial state
+        this.isDragged = true; //initial state
         //this.movePaddle();
     }
 
     movePaddle(gameRect) {
-        this.paddleElement.addEventListener("mousedown", (e) => {
-            //left is 0
-            this.isDragged = true;
-            //clientX is the horizontal position of the mouse pointer when the event is triggered, relative to the left edge of the browser’s viewport.
-            this.positionX = e.clientX; //initial position is the x position of the cursor
-        });
+        // this.paddleElement.addEventListener("mousedown", (e) => {
+        //     //left is 0
+        //     this.isDragged = true;
+        //     //clientX is the horizontal position of the mouse pointer when the event is triggered, relative to the left edge of the browser’s viewport.
+        //     this.positionX = e.clientX; //initial position is the x position of the cursor
+        // });
         document.addEventListener("mousemove", (e) => {
 
+            this.positionX = e.clientX;
             if (this.isDragged === true) {
                 //calculate the distance the mouse has moved, then update the posisition of the paddle.
                 //e.g., 200(current mouse x) - 100(previous position of paddle) = 100
@@ -43,9 +44,9 @@ export class Paddle {
                 //this.startX = e.clientX; // Update the starting point for the next move
             }
         });
-        document.addEventListener("mouseup", (e) => {
-            this.isDragged = false;
-        });
+        // document.addEventListener("mouseup", (e) => {
+        //     this.isDragged = false;
+        // });
     }
 
     expandPaddle() {

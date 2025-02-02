@@ -7,7 +7,8 @@ export class Game {
     playing = true
     current_menu = null
 
-    constructor(ball, paddle, bricksContainer) {
+
+    constructor(ball, paddle, bricksContainer, sfx) {
         this.ball = ball
         this.paddle = paddle
         this.bricksContainer = bricksContainer;
@@ -15,7 +16,8 @@ export class Game {
         document.body.append(this.container)
         this.container.appendChild(ball.livesContainer)
         this.container.append(bricksContainer.container, ball.container, paddle.container)
-        
+        this.sfx = sfx;
+
         ball.ballX = this.container.getBoundingClientRect().left + 400;
         ball.ballY = this.container.getBoundingClientRect().top + 350;
         // ball.animate(this.container);
@@ -47,10 +49,10 @@ export class Game {
         const paddleRect = this.paddle.paddleElement.getBoundingClientRect()
         const paddleCollision = circle.checkCollision(paddleRect)
         if (paddleCollision.test) {
+            this.sfx.playSound("HIT");
             this.paddle.sucessfulInteractions++;
             if (this.paddle.sucessfulInteractions == 2) {
-                let audio = new Audio("game/success-48018.mp3");
-                audio.play();
+                this.sfx.playSound("PADLE_EXPANSION");
                 this.paddle.expandPaddle();
             }
             if (paddleCollision.sideY === "top" || paddleCollision.sideY === "bottom") {
@@ -69,6 +71,7 @@ export class Game {
             const brickRect = this.bricksContainer.brickPositions[i]
             const brickCollision = circle.checkCollision(brickRect)
             if (brickCollision.test) {
+                this.sfx.playSound("HIT");
                 this.bricksContainer.handleBrickInteraction(brickRect.id)
                 if (brickCollision.sideY === "top" || brickCollision.sideY === "bottom") {
                     this.ball.ballVelocityY *= -1;

@@ -18,7 +18,8 @@ const SOUNDS = {
     CLICK: "https://cdn.glitch.global/cba8dee2-9d46-4788-8bc0-6cf090beed46/click2.wav?v=1737989811930",
     CLICK_BACK: "https://cdn.glitch.global/cba8dee2-9d46-4788-8bc0-6cf090beed46/CLICK_BACK.wav?v=1738427786490",
     HIT: "https://cdn.glitch.global/cba8dee2-9d46-4788-8bc0-6cf090beed46/hit.mp3?v=1737990133510",
-    GAME_START: "https://cdn.glitch.global/cba8dee2-9d46-4788-8bc0-6cf090beed46/game_start.wav?v=1738427601709"
+    GAME_START: "https://cdn.glitch.global/cba8dee2-9d46-4788-8bc0-6cf090beed46/game_start.wav?v=1738427601709",
+    PADLE_EXPANSION: "game/success-48018.mp3"
 }
 
 

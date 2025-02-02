@@ -110,6 +110,7 @@ export class BrickBreaker {
 
     const containerRect = this.container.getBoundingClientRect();
     const center = containerRect.width / 2;
-    this.paddle.paddleElement.style.left = `${center}px`;
+    this.paddle.paddleElement.style.left += `${center}px`;
+    this.paddle.positionX += center;
   }
 }
