@@ -34,6 +34,16 @@ export class Ball {
         }
     }
 
+    increaseSpeed(){
+        if(this.ballVelocityX<0){
+            this.ballVelocityX*=-1
+        }
+        if(this.ballVelocityY<0){
+            this.ballVelocityY*=-1
+        }
+        this.ballVelocityX*=1.3;
+        this.ballVelocityY*=1.3;
+    }
 
     animate(ballContainer) {
 

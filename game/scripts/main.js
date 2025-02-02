@@ -7,9 +7,10 @@ import { Menu, SFX } from "./world.js";
 
 const sfx = new SFX()
 function startGame() {
-    const bricks = new BrickBreaker(levels);
+    
     const paddle = new Paddle();
     const ball = new Ball();
+    const bricks = new BrickBreaker(levels, ball);
     const game = new Game(ball, paddle, bricks);
     document.body.append(game.container);
 }
