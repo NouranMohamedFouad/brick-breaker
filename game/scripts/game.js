@@ -12,6 +12,7 @@ export class Game {
         document.body.append(this.container)
 
         this.container.append(bricksContainer.container, ball.container, paddle.container)
+        this.container.appendChild(ball.livesContainer)
         ball.ballX = this.container.getBoundingClientRect().left + 150;
         ball.ballY = this.container.getBoundingClientRect().top + 10;
         // ball.animate(this.container);
@@ -48,7 +49,7 @@ export class Game {
             }
             this.paddle.paddleElement.style.background = "black"
         } else {
-            this.paddle.paddleElement.style.background = "red"
+            this.paddle.paddleElement.style.background = "linear-gradient(to bottom, #36454F, #D3D3D3)"
         }
 
         // check collision with bricks

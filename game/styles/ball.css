@@ -1,8 +1,20 @@
- #ball {
-   width: 36px;
-   height: 36px;
-   border-radius: 50%;
+#ball {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
+
+#lives-container {
    position: absolute;
-   pointer-events: none;
-   user-select: none;
- }
+   top: 70px;
+   left: 225px;
+   margin: 5px;
+}
+
+.heart-icon {
+ width: 30px;
+ height: 30px;
+}
