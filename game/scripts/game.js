@@ -122,6 +122,8 @@ export class Game {
         this.ball.ballY = this.container.getBoundingClientRect().top + 350;
         this.bricksContainer.loadLevel(0);
         this.playing = true;
+        this.ball.ballVelocityX=3;
+        this.ball.ballVelocityY=2;
     }
 
 }
