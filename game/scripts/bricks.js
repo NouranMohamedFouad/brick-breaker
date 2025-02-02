@@ -101,14 +101,15 @@ export class BrickBreaker {
     }
   }
 
-
-
   nextLevel() {
-    this.paddle.style.left;
     this.ball.ballX = this.container.getBoundingClientRect().left + 400;
     this.ball.ballY = this.container.getBoundingClientRect().top + 350;
     this.ball.increaseSpeed();
     this.container.innerHTML = '';
     this.loadLevel(this.currentLevelIndex + 1);
+
+    const containerRect = this.container.getBoundingClientRect();
+    const center = containerRect.width / 2;
+    this.paddle.paddleElement.style.left = `${center}px`;
   }
 }
