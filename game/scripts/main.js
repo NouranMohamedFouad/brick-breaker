@@ -3,9 +3,10 @@ import { levels } from "./levels.js";
 import { Game } from "./game.js";
 import { Paddle } from "./paddle.js"
 import { Ball } from "./ball.js";
+import { Menu, SFX } from "./world.js";
 
+const sfx = new SFX()
 function startGame() {
-
     const bricks = new BrickBreaker(levels);
     const paddle = new Paddle();
     const ball = new Ball();
@@ -14,7 +15,18 @@ function startGame() {
 }
 
 
+function main() {
+    const mainMenu = new Menu("Main menu")
+    mainMenu.addItem("New Game", () => {
+        sfx.playSound("GAME_START")
+        startGame()
+        mainMenu.close()
+        // main_menu.close()
+    })
+}
 
-startGame();
 
+
+// startGame();
+main()
 

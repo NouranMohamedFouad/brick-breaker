@@ -1,8 +1,11 @@
 import { Circle } from "./circle.js"
+import { Menu } from "./world.js"
 
 
 export class Game {
     container = document.createElement("div")
+    playing = true
+    current_menu = null
 
     constructor(ball, paddle, bricksContainer) {
         this.ball = ball
@@ -22,13 +25,22 @@ export class Game {
         window.addEventListener('keydown', (ev) => {
             if (ev.key === "/") {
                 this.bricksContainer.nextLevel();
+            } else if (ev.key === ".") {
+                if (this.current_menu) {
+                    this.current_menu.close()
+                    this.playing = true
+                    this.current_menu = null
+                } else {
+                    this.playing = false
+                    this.current_menu = this.showMenu()
+                }
             }
         })
     }
 
     mainFrame() {
         requestAnimationFrame(this.mainFrame.bind(this))
-
+        if (!this.playing) return;
         const circle = new Circle(this.ball.container.getBoundingClientRect())
 
         // check collision with paddle
@@ -70,5 +82,16 @@ export class Game {
 
         // update ball position
         this.ball.animate(this.container);
+    }
+
+    showMenu() {
+        this.playing = false
+        const menu = new Menu("Pause")
+        menu.addItem("Resume", () => {
+            this.playing = true;
+            this.current_menu = null
+            menu.close()
+        })
+        return menu
     }
 }
