@@ -17,7 +17,7 @@ export class Ball {
         this.livesContainer = document.createElement('div');
         this.livesContainer.id = 'lives-container';
         //document.body.appendChild(this.livesContainer);
-
+        this.onGameOver=null;
         this.updateLivesDisplay();
     }
 
@@ -71,6 +71,9 @@ export class Ball {
             this.updateLivesDisplay();
             if (this.lives <= 0) {
                 console.log('game over')
+                if(this.onGameOver){
+                    this.onGameOver();
+                }
             }
         } else if (ballCenterY - ballRadius < containerRect.top) {
             this.ballVelocityY *= -1;

@@ -24,6 +24,11 @@ export class Game {
         this.bricksContainer.loadLevel(0);
         this.mainFrame()
         this.paddle.movePaddle(this.container.getBoundingClientRect());
+
+        this.ball.onGameOver = function() {
+            this.showGameOverMenu();
+        }.bind(this);
+
         window.addEventListener('keydown', (ev) => {
             if (ev.key === "/") {
                 this.bricksContainer.nextLevel();
@@ -97,4 +102,26 @@ export class Game {
         })
         return menu
     }
+
+
+    showGameOverMenu() {
+        this.playing = false;
+        const gameOverMenu = new Menu("Game Over!");
+        gameOverMenu.addItem("Play Again", () => {
+            this.sfx.playSound("GAME_START");
+            this.resetGame();
+            gameOverMenu.close();
+        });
+        this.current_menu = gameOverMenu;
+    }
+
+    resetGame() {
+        this.ball.lives = 5;
+        this.ball.updateLivesDisplay();
+        this.ball.ballX = this.container.getBoundingClientRect().left + 400;
+        this.ball.ballY = this.container.getBoundingClientRect().top + 350;
+        this.bricksContainer.loadLevel(0);
+        this.playing = true;
+    }
+
 }
