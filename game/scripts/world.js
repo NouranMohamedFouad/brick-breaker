@@ -97,6 +97,18 @@ export class SFX {
             audio.play()
         }
     }
+
+    constructor() {
+        const first_interaction = () => {
+            const mainSong = document.getElementById("main_song")
+            if (mainSong && mainSong instanceof HTMLAudioElement) {
+                mainSong.volume = 0.7
+                mainSong.play()
+            }
+            window.removeEventListener("click", first_interaction)
+        }
+        window.addEventListener("click", first_interaction)
+    }
 }
 
 const about_html = `
