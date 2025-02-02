@@ -34,6 +34,12 @@ export class Game {
         const paddleRect = this.paddle.paddleElement.getBoundingClientRect()
         const paddleCollision = circle.checkCollision(paddleRect)
         if (paddleCollision.test) {
+            this.paddle.sucessfulInteractions++;
+            if (this.paddle.sucessfulInteractions == 2) {
+                let audio = new Audio("game/success-48018.mp3");
+                audio.play();
+                this.paddle.expandPaddle();
+            }
             if (paddleCollision.sideY === "top" || paddleCollision.sideY === "bottom") {
                 this.ball.ballVelocityY *= -1;
             }

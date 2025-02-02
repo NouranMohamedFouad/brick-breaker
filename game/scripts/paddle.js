@@ -52,18 +52,16 @@ export class Paddle {
         this.paddleElement.classList.add("paddle-expanded");
     }
 
-    interact(physicalObject) {
-        if (physicalObject instanceof Ball) {
-            this.sucessfulInteractions++;
-            if (this.sucessfulInteractions > 5) {
-                this.expandPaddle();
-            }
-        }
-        if (physicalObject instanceof Heart) {
-            this.expandPaddle();
-        }
-    }
+    // interact(physicalObject) {
+    //     if (physicalObject instanceof Ball) {
+    //         this.sucessfulInteractions++;
+    //         if (this.sucessfulInteractions > 5) {
+    //             this.expandPaddle();
+    //         }
+    //     }
+    //     if (physicalObject instanceof Heart) {
+    //         this.expandPaddle();
+    //     }
+    // }
 
 }
-// let paddle = new Paddle();
-//paddle.expandPaddle();
