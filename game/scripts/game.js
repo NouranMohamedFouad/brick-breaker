@@ -17,6 +17,7 @@ export class Game {
         this.container.appendChild(ball.livesContainer)
         this.container.append(bricksContainer.container, ball.container, paddle.container)
         this.sfx = sfx;
+        this.backgroundMusic = document.getElementById("main_song");
 
         ball.ballX = this.container.getBoundingClientRect().left + 400;
         ball.ballY = this.container.getBoundingClientRect().top + 350;
@@ -25,7 +26,7 @@ export class Game {
         this.mainFrame()
         this.paddle.movePaddle(this.container.getBoundingClientRect());
 
-        this.ball.onGameOver = function() {
+        this.ball.onGameOver = function () {
             this.showGameOverMenu();
         }.bind(this);
 
@@ -37,9 +38,11 @@ export class Game {
                     this.current_menu.close()
                     this.playing = true
                     this.current_menu = null
+                    this.resumeMusic();
                 } else {
                     this.playing = false
                     this.current_menu = this.showMenu()
+                    this.pauseMusic();
                 }
             }
         })
@@ -98,7 +101,8 @@ export class Game {
         menu.addItem("Resume", () => {
             this.playing = true;
             this.current_menu = null
-            menu.close()
+            menu.close();
+            this.resumeMusic();
         })
         return menu
     }
@@ -107,10 +111,14 @@ export class Game {
     showGameOverMenu() {
         this.playing = false;
         const gameOverMenu = new Menu("Game Over!");
+        this.pauseMusic();
+
         gameOverMenu.addItem("Play Again", () => {
             this.sfx.playSound("GAME_START");
             this.resetGame();
             gameOverMenu.close();
+            this.backgroundMusic.currentTime = 0;
+            this.resumeMusic();
         });
         this.current_menu = gameOverMenu;
     }
@@ -122,8 +130,22 @@ export class Game {
         this.ball.ballY = this.container.getBoundingClientRect().top + 350;
         this.bricksContainer.loadLevel(0);
         this.playing = true;
-        this.ball.ballVelocityX=3;
-        this.ball.ballVelocityY=2;
+        this.ball.ballVelocityX = 3;
+        this.ball.ballVelocityY = 2;
+    }
+
+
+
+    pauseMusic() {
+        if (this.backgroundMusic && !this.backgroundMusic.paused) {
+            this.backgroundMusic.pause();
+        }
+    }
+
+    resumeMusic() {
+        if (this.backgroundMusic && this.backgroundMusic.paused) {
+            this.backgroundMusic.play();
+        }
     }
 
 }
