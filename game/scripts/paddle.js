@@ -52,6 +52,9 @@ export class Paddle {
     expandPaddle() {
         this.paddleElement.classList.add("paddle-expanded");
     }
+    shrinkPaddle() {
+        this.paddleElement.classList.remove("paddle-expanded");
+    }
 
     // interact(physicalObject) {
     //     if (physicalObject instanceof Ball) {

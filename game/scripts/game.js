@@ -132,6 +132,8 @@ export class Game {
         this.playing = true;
         this.ball.ballVelocityX = 3;
         this.ball.ballVelocityY = 2;
+        this.paddle.shrinkPaddle();
+        this.paddle.sucessfulInteractions = 0;
     }
 
 
