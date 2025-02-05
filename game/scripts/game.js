@@ -101,6 +101,19 @@ export class Game {
             setTimeout(() => {
                 this.container.classList.remove("bottom-hit-effect")
             }, 2000);
+
+            this.ball.ballX = this.container.getBoundingClientRect().left + 400;
+            this.ball.ballY = this.container.getBoundingClientRect().top + 350;
+            if (this.ball.ballVelocityX < 0) {
+                this.ball.ballVelocityX *= -1
+            }
+            if (this.ball.ballVelocityY < 0) {
+                this.ball.ballVelocityY *= -1
+            }
+            const containerRect = this.container.getBoundingClientRect();
+            const centerX = containerRect.left + (containerRect.width / 2) - (this.paddle.paddleElement.offsetWidth / 2);
+            this.paddle.positionX = centerX;
+            this.paddle.paddleElement.style.left = `${centerX}px`;
         }
 
     }
