@@ -44,6 +44,7 @@ export class Game {
                     this.current_menu = this.showMenu()
                     this.pauseMusic();
                 }
+                this.paddle.isDragged = false
             }
         })
     }
@@ -112,6 +113,7 @@ export class Game {
             this.current_menu = null
             menu.close();
             this.resumeMusic();
+            this.paddle.isDragged = true
         })
         return menu
     }
