@@ -38,6 +38,7 @@ export class Game {
                     this.current_menu.close()
                     this.playing = true
                     this.current_menu = null
+                    this.paddle.isDragged = true
                     this.resumeMusic();
                 } else {
                     this.playing = false
