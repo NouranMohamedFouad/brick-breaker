@@ -134,7 +134,7 @@
     background: #00000050;
     display: grid;
     place-content: center;
-    transition: 325ms;
+    transition: background 325ms;
     z-index: 30;
 
     &:empty {
@@ -147,4 +147,29 @@
 
 .custom-item {
     color: white;
+}
+
+
+#unsupported_screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 1rem;
+    z-index: 40;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: black;
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+
+    @media screen and (min-width: 1100px) {
+        display: none;
+    }
 }

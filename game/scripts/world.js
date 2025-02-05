@@ -19,7 +19,8 @@ const SOUNDS = {
     CLICK_BACK: "https://cdn.glitch.global/cba8dee2-9d46-4788-8bc0-6cf090beed46/CLICK_BACK.wav?v=1738427786490",
     HIT: "https://cdn.glitch.global/cba8dee2-9d46-4788-8bc0-6cf090beed46/hit.mp3?v=1737990133510",
     GAME_START: "https://cdn.glitch.global/cba8dee2-9d46-4788-8bc0-6cf090beed46/game_start.wav?v=1738427601709",
-    PADLE_EXPANSION: "game/success-48018.mp3"
+    PADLE_EXPANSION: "game/success-48018.mp3",
+    FAULT: "https://cdn.glitch.global/cba8dee2-9d46-4788-8bc0-6cf090beed46/fault.wav?v=1738776670137"
 }
 
 
@@ -98,25 +99,10 @@ export class SFX {
         }
     }
 
+    backgroundMusic = document.getElementById("main_song")
+
     constructor() {
-        const first_interaction = () => {
-            const mainSong = document.getElementById("main_song")
-            if (mainSong && mainSong instanceof HTMLAudioElement) {
-                mainSong.volume = 0.7
-                mainSong.play()
-            }
-            window.removeEventListener("click", first_interaction)
-        }
-        window.addEventListener("click", first_interaction)
+
     }
 }
 
-const about_html = `
-    <p>
-        <b>Brick breaker</b>
-        <br>
-        <p>
-            A simple break breaker game with basic features
-        </p>
-    </p>
-`

@@ -4,3 +4,19 @@
     background: rgb(175, 175, 175);
     border-radius: 30px;
 }
+
+
+.game-container.bottom-hit-effect {
+    animation: hit-effect 0.25s forwards;
+}
+
+
+@keyframes hit-effect {
+    0% {
+        background: #E52020;
+    }
+
+    100% {
+        background: rgb(175, 175, 175);
+    }
+}

@@ -17,7 +17,7 @@ export class Ball {
         this.livesContainer = document.createElement('div');
         this.livesContainer.id = 'lives-container';
         //document.body.appendChild(this.livesContainer);
-        this.onGameOver=null;
+        this.onGameOver = null;
         this.updateLivesDisplay();
     }
 
@@ -34,19 +34,19 @@ export class Ball {
         }
     }
 
-    increaseSpeed(){
-        if(this.ballVelocityX<0){
-            this.ballVelocityX*=-1
+    increaseSpeed() {
+        if (this.ballVelocityX < 0) {
+            this.ballVelocityX *= -1
         }
-        if(this.ballVelocityY<0){
-            this.ballVelocityY*=-1
+        if (this.ballVelocityY < 0) {
+            this.ballVelocityY *= -1
         }
-        this.ballVelocityX*=1.3;
-        this.ballVelocityY*=1.3;
+        this.ballVelocityX *= 1.3;
+        this.ballVelocityY *= 1.3;
     }
 
     animate(ballContainer) {
-
+        let isABottomHit = false
         const containerRect = ballContainer.getBoundingClientRect();
         const ballRect = this.ball.getBoundingClientRect();
 
@@ -71,10 +71,11 @@ export class Ball {
             this.updateLivesDisplay();
             if (this.lives <= 0) {
                 console.log('game over')
-                if(this.onGameOver){
+                if (this.onGameOver) {
                     this.onGameOver();
                 }
             }
+            isABottomHit = true
         } else if (ballCenterY - ballRadius < containerRect.top) {
             this.ballVelocityY *= -1;
 
@@ -86,6 +87,7 @@ export class Ball {
         this.ball.style.top = this.ballY + 'px';
 
         //   setTimeout(() => this.animate(ballContainer), 10);
+        return isABottomHit
     }
 }
 

@@ -17,7 +17,6 @@ export class Game {
         this.container.appendChild(ball.livesContainer)
         this.container.append(bricksContainer.container, ball.container, paddle.container)
         this.sfx = sfx;
-        this.backgroundMusic = document.getElementById("main_song");
 
         ball.ballX = this.container.getBoundingClientRect().left + 400;
         ball.ballY = this.container.getBoundingClientRect().top + 350;
@@ -28,12 +27,13 @@ export class Game {
 
         this.ball.onGameOver = function () {
             this.showGameOverMenu();
+            this.paddle.isDragged = false
         }.bind(this);
 
         window.addEventListener('keydown', (ev) => {
             if (ev.key === "/") {
                 this.bricksContainer.nextLevel();
-            } else if (ev.key === ".") {
+            } else if (ev.key === "." || ev.key === "Escape") {
                 if (this.current_menu) {
                     this.current_menu.close()
                     this.playing = true
@@ -92,7 +92,16 @@ export class Game {
         }
 
         // update ball position
-        this.ball.animate(this.container);
+        const isABottomHit = this.ball.animate(this.container);
+
+        if (isABottomHit) {
+            this.sfx.playSound("FAULT")
+            this.container.classList.add("bottom-hit-effect")
+            setTimeout(() => {
+                this.container.classList.remove("bottom-hit-effect")
+            }, 2000);
+        }
+
     }
 
     showMenu() {
@@ -117,7 +126,7 @@ export class Game {
             this.sfx.playSound("GAME_START");
             this.resetGame();
             gameOverMenu.close();
-            this.backgroundMusic.currentTime = 0;
+            this.sfx.backgroundMusic.currentTime = 0;
             this.resumeMusic();
         });
         this.current_menu = gameOverMenu;
@@ -134,19 +143,22 @@ export class Game {
         this.ball.ballVelocityY = 2;
         this.paddle.shrinkPaddle();
         this.paddle.sucessfulInteractions = 0;
+        this.paddle.isDragged = true
     }
 
 
 
     pauseMusic() {
-        if (this.backgroundMusic && !this.backgroundMusic.paused) {
-            this.backgroundMusic.pause();
+        if (this.sfx.backgroundMusic && !this.sfx.backgroundMusic.paused) {
+            this.sfx.backgroundMusic.pause();
         }
     }
 
     resumeMusic() {
-        if (this.backgroundMusic && this.backgroundMusic.paused) {
-            this.backgroundMusic.play();
+        if (this.sfx.backgroundMusic && this.sfx.backgroundMusic.paused) {
+            this.sfx.backgroundMusic.currentTime = 0
+            this.sfx.backgroundMusic.volume = 0.7
+            this.sfx.backgroundMusic.play()
         }
     }
 
