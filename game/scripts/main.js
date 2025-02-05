@@ -36,8 +36,8 @@ function main() {
             }
         }
     })
-    const mainMenu = new Menu("Main menu")
-    mainMenu.addItem("New Game", () => {
+    const mainMenu = new Menu("🔨 Brick Breaker 🧱")
+    mainMenu.addItem("Start Game", () => {
         sfx.playSound("GAME_START")
         game = startGame()
         game.resumeMusic()
