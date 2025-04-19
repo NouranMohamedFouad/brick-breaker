@@ -8,10 +8,11 @@ export class Game {
     current_menu = null
 
 
-    constructor(ball, paddle, bricksContainer, sfx) {
+    constructor(ball, paddle, bricksContainer, sfx, themeManager) {
         this.ball = ball
         this.paddle = paddle
         this.bricksContainer = bricksContainer;
+        this.themeManager = themeManager;
         this.container.classList.add("game-container")
         document.body.append(this.container)
         this.container.appendChild(ball.livesContainer)
@@ -115,6 +116,19 @@ export class Game {
             menu.close();
             this.resumeMusic();
             this.paddle.isDragged = true
+        })
+        menu.addItem("Theme", () => {
+            const themes = this.themeManager.getThemeNames()
+            const themeMenu = menu.submenu("Theme")
+            themes.forEach(theme => {
+                themeMenu.addItem(theme, () => {
+                    this.themeManager.setTheme(theme)
+                    themeMenu.close()
+                })
+            })
+            themeMenu.addItem("Back", () => {
+                themeMenu.close()
+            })
         })
         return menu
     }

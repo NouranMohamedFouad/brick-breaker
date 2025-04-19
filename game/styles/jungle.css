@@ -1,0 +1,23 @@
+:root {
+    --menu-bg: #334f7b;
+    --menu-fg: white;
+    --menu-item-bg: #5382b4;
+    --menu-item-fg: white;
+}
+
+.brick {
+    background: green !important;
+}
+
+.silverBrick {
+    background: silver !important;
+}
+
+.game-container {}
+
+
+body {
+    background-image: url("https://cdn.glitch.global/51bcd4c0-4cda-43aa-8ebb-4e90f5efd03f/WhatsApp%20Image%202025-04-19%20at%205.04.05%20PM.jpeg?v=1745086155112");
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -1,8 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+    --menu-bg: #17153B;
+    --menu-fg: white;
+    --menu-item-bg: #2E236C;
+    --menu-item-fg: white;
+}
 
 .menu {
-    background: #17153B;
+    background: var(--menu-bg);
     mask: radial-gradient(2rem at 2rem 2rem, rgba(0, 0, 0, 0) 99%, #000) -2rem -2rem;
     font-family: "Roboto", serif;
     width: 500px;
@@ -44,7 +50,7 @@
 .menu-title {
     text-align: center;
     font-size: 2rem;
-    color: white;
+    color: var(--menu-fg);
     padding: 1rem;
 }
 
@@ -62,9 +68,8 @@
     text-align: center;
     font-size: 1.25rem;
     font-weight: 600;
-    color: black;
-    background: #2E236C;
-    color: white;
+    background: var(--menu-item-bg);
+    color: var(--menu-item-fg);
     mask: radial-gradient(1rem at 1rem 1rem, transparent 99%, #82cd47) -1rem -1rem;
     transition: 225ms;
     will-change: transform;

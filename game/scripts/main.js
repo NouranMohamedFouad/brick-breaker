@@ -4,13 +4,24 @@ import { Game } from "./game.js";
 import { Paddle } from "./paddle.js"
 import { Ball } from "./ball.js";
 import { Menu, SFX } from "./world.js";
+import { ThemeManager } from "./themes.js";
+
+const themeManager = new ThemeManager()
+themeManager.addTheme("jungle", {
+    stylesheet: "/game/styles/jungle.css",
+    audio: "https://cdn.glitch.global/51bcd4c0-4cda-43aa-8ebb-4e90f5efd03f/WhatsApp%20Audio%202025-04-19%20at%205.10.11%20PM.mp3?v=1745094261100"
+})
+themeManager.addTheme("theater", {
+    stylesheet: "/game/styles/theater.css",
+    audio: "https://cdn.glitch.global/51bcd4c0-4cda-43aa-8ebb-4e90f5efd03f/WhatsApp%20Audio%202025-04-19%20at%205.09.57%20PM.mp3?v=1745093968376"
+})
 
 const sfx = new SFX()
 function startGame() {
     const paddle = new Paddle();
     const ball = new Ball();
     const bricks = new BrickBreaker(levels, ball, paddle);
-    const game = new Game(ball, paddle, bricks, sfx);
+    const game = new Game(ball, paddle, bricks, sfx, themeManager);
     document.body.append(game.container);
     return game
 }
@@ -73,6 +84,27 @@ function main() {
         aboutMenu.addItem("Back", () => {
             aboutMenu.close()
         })
+    })
+
+    mainMenu.addItem("Settings", () => {
+        const settingsMenu = mainMenu.submenu("Settings")
+        settingsMenu.addItem("Theme", () => {
+            const themes = themeManager.getThemeNames()
+            const themeMenu = settingsMenu.submenu("Theme")
+            themes.forEach(theme => {
+                themeMenu.addItem(theme, () => {
+                    themeManager.setTheme(theme)
+                    themeMenu.close()
+                })
+            })
+            themeMenu.addItem("Back", () => {
+                themeMenu.close()
+            })
+        })
+        settingsMenu.addItem("Back", () => {
+            settingsMenu.close()
+        })
+
     })
 }
 

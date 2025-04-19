@@ -1,0 +1,16 @@
+.brick {
+    background: yellow !important;
+}
+
+.silverBrick {
+    background: blue !important;
+}
+
+.game-container {}
+
+
+body {
+    background-image: url(https://img.freepik.com/premium-photo/retro-neon-simple-grid-dark-space-flat-surface-3d-render-computer-generated-backdrop_828631-6466.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
