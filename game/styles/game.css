@@ -1,8 +1,10 @@
 .game-container {
     height: 500px;
     width: 1100px;
-    background: rgb(175, 175, 175);
+    background: rgba(0, 0, 0, 0.831);
     border-radius: 30px;
+    border: 3px solid #d1fffb;
+    box-shadow: 0 0 30px #d1fffb;
 }
 
 
@@ -17,6 +19,6 @@
     }
 
     100% {
-        background: rgb(175, 175, 175);
+        background: rgba(0, 0, 0, 0.831);
     }
 }

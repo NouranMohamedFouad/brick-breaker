@@ -4,7 +4,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: #1a1a1ac4;
+    background: #333333c4;
 }
 
 .bricks-container {
@@ -16,15 +16,17 @@ body {
 .brick {
     width: 60px;
     height: 30px;
-    background: linear-gradient(to bottom, #392c44a4, #f7a6dcea);
+    background: linear-gradient(to bottom, #588897, #b8fbff);
     border-radius: 5px;
-    border: 1px solid #700070;
+    border: 1px solid #66ccff;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 0 10px #84a29f;
+
 }
 
 .brick.cracked {
-    background: linear-gradient(to bottom, #392c44bb, #f7a6dcea);
+    background: linear-gradient(to bottom, #3f626c, #b2dfff);
 }
 
 .brick.cracked::after {

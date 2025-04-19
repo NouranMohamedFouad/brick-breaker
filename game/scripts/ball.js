@@ -24,12 +24,15 @@ export class Ball {
 
     updateLivesDisplay() {
         this.livesContainer.innerHTML = ''; //clear old lives display
-
+        this.livesContainer.style.padding='10px';
         //add the current lives display
         for (let i = 0; i < this.lives; i++) {
             const heart = document.createElement('img');
-            heart.src = 'https://cdn-icons-png.flaticon.com/256/8236/8236748.png';
+            heart.src = 'https://images.emojiterra.com/microsoft/fluent-emoji/15.1/3d/1fa75_3d.png';
             heart.classList.add('heart-icon');
+            heart.style.width = '30px';
+            heart.style.height = '30px';
+            heart.style.gap='2px';
             this.livesContainer.appendChild(heart);
         }
     }
